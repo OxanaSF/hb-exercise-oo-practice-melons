@@ -78,7 +78,7 @@ def make_melon_type_lookup(melon_types):
     return dict_melon_type
 
 #test code:
-print(make_melon_type_lookup(make_melon_types()))
+#print(make_melon_type_lookup(make_melon_types()))
 
 
     # Fill in the rest
@@ -89,12 +89,39 @@ print(make_melon_type_lookup(make_melon_types()))
 
 class Melon(object):
     """A melon in a melon harvest."""
-
+    def __init__(self, melon_type, shape_rate, color_rate, is_field3, worker_name):
+        """Initialize a melon."""
+        self.melon_type = melon_type
+        self.shape_rate = shape_rate
+        self.color_rate = color_rate
+        self.is_field3 = is_field3
+        self.worker_name = worker_name
+        
+    def is_sellable(self):
+        return self.shape_rate > 5 and self.color_rate > 5 and self.is_field3 == False
     # Fill in the rest
     # Needs __init__ and is_sellable methods
 
 def make_melons(melon_types):
     """Returns a list of Melon objects."""
+   
+    melons_by_id = make_melon_type_lookup(melon_types)
+    melon_1 = Melon(melons_by_id['yw'], 8, 7, False, 'Sheila')
+    melon_2 = Melon(melons_by_id['yw'], 3, 4, False, 'Sheila')
+    melon_3 = Melon(melons_by_id['yw'], 9, 8, True, 'Sheila')
+    melon_4 = Melon(melons_by_id['cas'], 10, 6, False, 'Sheila')
+    melon_5 = Melon(melons_by_id['cren'], 8, 9, False, 'Michael')
+    melon_6 = Melon(melons_by_id['cren'], 8, 2, False, 'Michael')
+    melon_7 = Melon(melons_by_id['cren'], 2, 3, False, 'Michael')
+    melon_8 = Melon(melons_by_id['musk'], 6, 7, False, 'Michael')
+    melon_9 = Melon(melons_by_id['yw'], 7, 10, True, 'Sheila')
+
+    melons_list =[melon_1, melon_2, melon_3, melon_4, melon_5, melon_6, melon_7,
+        melon_8, melon_9]
+
+    return melons_list
+
+#make_melons(make_melon_types())
 
     # Fill in the rest
 
